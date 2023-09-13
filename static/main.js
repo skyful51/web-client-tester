@@ -10,8 +10,10 @@ showButton.onclick = function () {
 uploadButton.onclick = function () {
     var sendIntervalButton = document.getElementById("sendInterval");
     var sendTimesButton = document.getElementById("sendTimes");
+    var serverURLButton = document.getElementById("serverURL");
     var sendInterval = sendIntervalButton.value;
     var sendTimes = sendTimesButton.value;
+    var serverURL = serverURLButton.value;
 
     if (!isNaN(sendInterval)) { // 입력된 값이 숫자인지 확인
         sendInterval = parseInt(sendInterval); // 문자열을 숫자로 변환
@@ -47,7 +49,6 @@ uploadButton.onclick = function () {
         reader.onload = function() {
             var base64String = reader.result; // "data:image/jpeg;base64," 부분을 제거
             var count = 0;
-            var serverURL = "127.0.0.1:80/api/detectionr"
             var intervalId = setInterval(function () {
                 postRequest(serverURL, base64String);
                 count++;
